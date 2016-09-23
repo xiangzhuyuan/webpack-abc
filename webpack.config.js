@@ -1,7 +1,7 @@
 module.exports = {
      entry: './src/index.js',
      output: {
-         path: './bin',
+         path: './bundle',
          filename: 'index.min.js'
      },
      module: {
