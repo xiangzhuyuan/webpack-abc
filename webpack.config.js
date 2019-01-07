@@ -1,24 +1,31 @@
+const path = require('path');
+
 module.exports = {
-     entry: './src/index.js',
-     output: {
-         path: './bundle',
-         filename: 'index.min.js'
-     },
-     module: {
-         loaders: [{
-             test: /\.js$/,
-             exclude: /node_modules/,
-             loader: 'babel-loader',
-         },
-        {
-             test: /\.css$/,
-             loader: 'style!css',
-         },
-        {
-             test: /\.json$/,
-             loader: 'json-loader',
-             include: './src/data/'
-         }]
-     }
- }
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'bundle'),
+    filename: 'index.min.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      {
+        test: /\.css$/,
+        use: 'css-loader',
+      },
+      {
+        test: /\.json$/,
+        use: 'json-loader',
+        include: path.resolve(__dirname, 'src/data/')
+      }
+    ]
+  },
+  "mode": "development"
+}
  
